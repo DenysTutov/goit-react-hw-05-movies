@@ -7,10 +7,11 @@ export const MoviesList = () => {
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {
-    getTrandingMovies().then(data => {
-      setMovies(data.results);
-      console.log(data.results);
-    });
+    getTrandingMovies()
+      .then(data => {
+        setMovies(data.results);
+      })
+      .catch(error => console.log(error));
   }, []);
 
   if (!movies) {
@@ -18,12 +19,15 @@ export const MoviesList = () => {
   }
 
   return (
-    <ul>
-      {movies.map(({ id, title, name }) => (
-        <li key={id} className={styles.item}>
-          <Link to={`/movies/${id}`}>{title || name}</Link>
-        </li>
-      ))}
-    </ul>
+    <main className={styles.main}>
+      <h1>Trending today</h1>
+      <ul className={styles.list}>
+        {movies.map(({ id, title, name }) => (
+          <li key={id} className={styles.item}>
+            <Link to={`/movies/${id}`}>{title || name}</Link>
+          </li>
+        ))}
+      </ul>
+    </main>
   );
 };

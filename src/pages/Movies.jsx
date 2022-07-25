@@ -2,9 +2,8 @@ import { Outlet } from 'react-router-dom';
 
 export const MoviesView = () => {
   return (
-    <div>
-      MoviesView
+    <main>
       <Outlet />
-    </div>
+    </main>
   );
 };

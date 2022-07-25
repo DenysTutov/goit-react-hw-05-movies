@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './AppBar.module.scss';
 
 const navItems = [
-  { href: 'home', text: 'Home' },
+  { href: '/', text: 'Home' },
   { href: 'movies', text: 'Movies' },
 ];
 
