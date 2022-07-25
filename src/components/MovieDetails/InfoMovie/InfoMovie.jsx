@@ -1,25 +1,6 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { getMovieById } from '../../../services/fetchMoviesApi';
 import styles from './InfoMovie.module.scss';
 
-export const InfoMovie = () => {
-  const [movie, setMovie] = useState(null);
-
-  const { movieId } = useParams();
-
-  useEffect(() => {
-    getMovieById(movieId)
-      .then(data => {
-        setMovie(data);
-      })
-      .catch(console.log);
-  }, [movieId]);
-
-  if (!movie) {
-    return;
-  }
-
+export const InfoMovie = ({ movie }) => {
   const {
     title,
     name,

@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-export const MoviesView = () => {
+export const Movies = () => {
   return (
     <main>
       <Outlet />
