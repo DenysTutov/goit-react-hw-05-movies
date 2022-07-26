@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMovieReviews } from 'services/fetchMoviesApi';
+import * as API from '../../services/fetchMoviesApi';
 
-export const ReviewsMovie = () => {
+const ReviewsMovie = () => {
   const [reviewMovie, setReviewMovie] = useState(null);
   const { movieId } = useParams();
 
   useEffect(() => {
-    getMovieReviews(movieId)
+    API.getMovieReviews(movieId)
       .then(data => {
         setReviewMovie(data);
       })
@@ -35,3 +35,5 @@ export const ReviewsMovie = () => {
     </>
   );
 };
+
+export default ReviewsMovie;

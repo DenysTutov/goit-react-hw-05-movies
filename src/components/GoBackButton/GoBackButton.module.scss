@@ -12,4 +12,10 @@
 
   border-radius: 5px;
   border: 1px solid #bbbbbb;
+
+  &:hover,
+  :focus {
+    color: #dddddd;
+    background-color: #212121;
+  }
 }

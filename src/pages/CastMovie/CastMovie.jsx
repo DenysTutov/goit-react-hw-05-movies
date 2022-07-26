@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMovieCast } from 'services/fetchMoviesApi';
+import * as API from '../../services/fetchMoviesApi';
 import styles from './CastMovie.module.scss';
 
-export const CastMovie = () => {
+const CastMovie = () => {
   const [castMovie, setCastMovie] = useState(null);
   const { movieId } = useParams();
 
   useEffect(() => {
-    getMovieCast(movieId)
+    API.getMovieCast(movieId)
       .then(data => setCastMovie(data))
       .catch(console.log);
   }, [movieId]);
@@ -50,3 +50,5 @@ export const CastMovie = () => {
     </>
   );
 };
+
+export default CastMovie;

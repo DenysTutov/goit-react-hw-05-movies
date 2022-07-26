@@ -6,7 +6,7 @@ const navItems = [
   { href: 'movies', text: 'Movies' },
 ];
 
-export const AppBar = () => {
+const AppBar = () => {
   return (
     <header className={styles.header}>
       <nav>
@@ -25,3 +25,5 @@ export const AppBar = () => {
     </header>
   );
 };
+
+export default AppBar;

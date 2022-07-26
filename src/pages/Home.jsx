@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { getTrandingMovies } from '../services/fetchMoviesApi';
-import { MoviesList } from 'components/MovieList/MoviesList';
+import * as API from '../services/fetchMoviesApi';
+import MoviesList from 'components/MovieList/MoviesList';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {
-    getTrandingMovies()
+    API.getTrandingMovies()
       .then(data => {
         setMovies(data.results);
       })
@@ -18,8 +18,10 @@ export const Home = () => {
   }
 
   return (
-    <main>
-      <MoviesList movies={movies} title={'Trending today'} />
-    </main>
+    <>
+      <MoviesList movies={movies} titlePage={'Trending today'} />
+    </>
   );
 };
+
+export default Home;
