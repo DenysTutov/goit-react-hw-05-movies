@@ -1,5 +1,5 @@
-import { Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect, Suspense } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import * as API from '../services/fetchMoviesApi';
 import Additional from '../components/Addititonal/Addititonal';
