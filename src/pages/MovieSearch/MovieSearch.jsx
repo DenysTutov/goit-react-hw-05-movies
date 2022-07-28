@@ -3,16 +3,16 @@ import { useSearchParams } from 'react-router-dom';
 import * as API from '../../services/fetchMoviesApi';
 import MoviesList from 'components/MovieList/MoviesList';
 import Loading from 'components/Loading/Loading';
-
 import styles from './MovieSearch.module.scss';
 
 const MovieSearch = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') ?? '';
+
   const [movies, setMovie] = useState(null);
   const [totalRezultMovie, setTotalRezMovie] = useState(null);
   const [showLoading, setShowLoading] = useState(false);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query') ?? '';
+  const [inputSearch, setInputSearch] = useState(query);
 
   useEffect(() => {
     if (query === '') return;
@@ -30,13 +30,17 @@ const MovieSearch = () => {
       .catch(console.log);
   }, [query]);
 
+  const handleInputChange = e => {
+    setInputSearch(e.currentTarget.value);
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-    const form = e.currentTarget;
+    const form = e.target;
     const queryNormalized = form.query.value.toLowerCase().trim();
 
     setSearchParams({ query: queryNormalized });
-    form.reset();
+    // form.reset();
   };
 
   return (
@@ -46,6 +50,8 @@ const MovieSearch = () => {
           type="text"
           name="query"
           className={styles.input}
+          value={inputSearch}
+          onChange={handleInputChange}
           placeholder="Enter movie name"
         />
 
